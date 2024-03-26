@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Precios de Productos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Precios de Productos</h1>
+    <input type="text" id="searchInput" placeholder="Buscar...">
+    <div class="button-table-container">
+      <button class="toggleModeButton" id="toggleModeButton">Cambiar a Modo Oscuro</button>
+      <div class="table-container">
+        <table id="productTable">
+          <thead>
+            <tr>
+              <th>PROVEEDOR</th>
+              <th>CODIGO</th>
+              <th>DESCRIPCION</th>
+              <th>PRECIO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Aquí se llenarán los datos de la tabla dinámicamente -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

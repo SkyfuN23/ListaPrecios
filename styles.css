@@ -1,0 +1,143 @@
+/* Estilos para el Modo Claro */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff; /* Fondo blanco */
+    color: #333333; /* Texto negro */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9; /* Fondo gris claro */
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.button-table-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.toggleModeButton {
+    margin-bottom: 20px; /* Ajusta el margen inferior para separar el botón de la tabla */
+    background-color: #fff; /* Fondo gris oscuro */
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.458);
+    color: #333333; /* Texto negro */
+    padding: 10px 20px; /* Ajusta el padding para dar espacio alrededor del texto */
+    border: none; /* Quita el borde */
+    border-radius: 4px; /* Añade esquinas redondeadas */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    text-decoration: none; /* Quita la decoración de texto */
+    display: inline-block; /* Hace que el botón se comporte como un elemento en línea */
+    transition: background-color 0.1s; /* Agrega una transición suave al cambiar el color de fondo */
+}
+
+#toggleModeButton:hover {
+    background-color: #9d9d9d; /* Cambia el color de fondo al pasar el cursor sobre el botón */
+}
+
+
+h1 {
+    text-align: center;
+    color: #333333; /* Texto negro */
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #cccccc; /* Borde gris */
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #666666; /* Borde gris más oscuro al enfocar */
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #eeeeee; /* Gris claro para encabezados */
+    color: #333333; /* Texto negro */
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #f2f2f2; /* Fondo gris claro para filas impares */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #ffffff; /* Fondo blanco para filas pares */
+}
+
+tbody tr:hover {
+    background-color: #dddddd; /* Fondo gris más oscuro al hacer hover */
+}
+
+/* Estilos para el Modo Oscuro */
+body.dark-mode {
+    background-color: #333333; /* Fondo gris oscuro */
+    color: #ffffff; /* Texto blanco */
+}
+
+.dark-mode .container {
+    background-color: #222222; /* Fondo gris oscuro */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada */
+}
+
+.dark-mode h1 {
+    color: #ffffff; /* Texto blanco */
+}
+
+.dark-mode input[type="text"] {
+    border: 1px solid #666666; /* Borde gris */
+    background-color: #444444; /* Fondo gris oscuro */
+    color: #ffffff; /* Texto blanco */
+}
+
+.dark-mode input[type="text"]:focus {
+    border-color: #999999; /* Borde gris más claro al enfocar */
+}
+
+.dark-mode button {
+    background-color: #343a40; /* Fondo gris oscuro */
+    color: #ffffff; /* Texto blanco */
+}
+
+.dark-mode table th {
+    background-color: #555555; /* Gris oscuro para encabezados */
+    color: #ffffff; /* Texto blanco */
+}
+
+.dark-mode tbody tr:nth-child(odd) {
+    background-color: #444444; /* Fondo gris oscuro para filas impares */
+}
+
+.dark-mode tbody tr:nth-child(even) {
+    background-color: #333333; /* Fondo gris más oscuro para filas pares */
+}
+
+.dark-mode tbody tr:hover {
+    background-color: #666666; /* Fondo gris más claro al hacer hover */
+}

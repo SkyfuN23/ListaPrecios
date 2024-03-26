@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.getElementById('searchInput');
     const productTable = document.getElementById('productTable');
     const tbody = productTable.getElementsByTagName('tbody')[0];
@@ -9,22 +9,22 @@ document.addEventListener("DOMContentLoaded", function() {
     // Función para renderizar la tabla
     function renderTable(data) {
         tbody.innerHTML = '';
-        data.forEach(producto => {
+        data.forEach((producto, index) => {
             const row = tbody.insertRow();
-            row.innerHTML = `<td>${producto.Proveedor}</td><td>${producto.Codigo}</td><td>${producto.Descripcion}</td><td>${producto.Precio}</td>`;
+            row.innerHTML = `<td>${index + 2}</td><td>${producto.Proveedor}</td><td>${producto.Codigo}</td><td>${producto.Descripcion}</td><td>${producto.Precio}</td>`;
         });
     }
 
     // Función para cargar el archivo CSV
     function loadCSV() {
         const xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
+        xhr.onreadystatechange = function () {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
                     const csv = xhr.responseText;
                     const lines = csv.split('\n');
                     const headers = lines[0].split(';'); // Utilizar punto y coma como delimitador
-                    productos = lines.slice(1).map(line => {
+                    productos = lines.slice(1, -1).map(line => {
                         const values = line.split(';'); // Utilizar punto y coma como delimitador
                         const producto = {};
                         headers.forEach((header, index) => {

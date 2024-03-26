@@ -7,6 +7,10 @@ body {
     padding: 0;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 .container {
     max-width: 800px;
     margin: 20px auto;
@@ -140,4 +144,46 @@ body.dark-mode {
 
 .dark-mode tbody tr:hover {
     background-color: #666666; /* Fondo gris más claro al hacer hover */
+}
+
+
+
+
+/* Estilos específicos para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+        box-sizing: border-box;
+        width: calc(100%);
+        margin-bottom: 10px;
+    }
+
+    .toggleModeButton {
+        margin-bottom: 10px;
+    }
+
+    .button-table-container {
+        align-items: stretch;
+    }
+
+    .table-container {
+        overflow-x: auto;
+        width: 100%;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 8px 10px;
+    }
 }

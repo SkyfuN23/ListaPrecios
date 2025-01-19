@@ -6,14 +6,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let productos = []; // Variable para almacenar los datos del archivo XLSX
 
-    // Función para renderizar la tabla
-    function renderTable(data) {
-        tbody.innerHTML = '';
-        data.forEach((producto, index) => {
-            const row = tbody.insertRow();
-            row.innerHTML = `<td>${index + 1}</td><td>${producto.Proveedor}</td><td>${producto.Codigo}</td><td>${producto.Descripcion}</td><td>${producto.Precio}</td>`;
-        });
-    }
+// Función para renderizar la tabla con formato de precio
+function renderTable(data) {
+    tbody.innerHTML = '';
+    data.forEach((producto, index) => {
+        const precioFormateado = formatPrice(producto.Precio);
+        const row = tbody.insertRow();
+        row.innerHTML = `<td>${index + 1}</td><td>${producto.Proveedor}</td><td>${producto.Codigo}</td><td>${producto.Descripcion}</td><td>${precioFormateado}</td>`;
+    });
+}
+
+// Función para formatear el precio en formato argentino ($5.000, $30.000)
+function formatPrice(price) {
+    if (!price) return "$0"; // Si el precio está vacío o indefinido, devuelve "$0"
+    
+    const number = parseFloat(price); // Convierte el precio a número
+    if (isNaN(number)) return price; // Si no es un número, devuelve el valor original
+
+    return `$${number.toLocaleString('es-AR')}`; // Aplica el formato de Argentina
+}
 
     // Función para cargar el archivo XLSX
     function loadExcel() {

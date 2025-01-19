@@ -4,46 +4,33 @@ document.addEventListener("DOMContentLoaded", function () {
     const tbody = productTable.getElementsByTagName('tbody')[0];
     const toggleModeButton = document.getElementById('toggleModeButton');
 
-    let productos = []; // Variable para almacenar los datos del archivo CSV
+    let productos = []; // Variable para almacenar los datos del archivo XLSX
 
     // Función para renderizar la tabla
     function renderTable(data) {
         tbody.innerHTML = '';
         data.forEach((producto, index) => {
             const row = tbody.insertRow();
-            row.innerHTML = `<td>${index + 2}</td><td>${producto.Proveedor}</td><td>${producto.Codigo}</td><td>${producto.Descripcion}</td><td>${producto.Precio}</td>`;
+            row.innerHTML = `<td>${index + 1}</td><td>${producto.Proveedor}</td><td>${producto.Codigo}</td><td>${producto.Descripcion}</td><td>${producto.Precio}</td>`;
         });
     }
 
-    // Función para cargar el archivo CSV
-    function loadCSV() {
-        const xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    const csv = xhr.responseText;
-                    const lines = csv.split('\n');
-                    const headers = lines[0].split(';'); // Utilizar punto y coma como delimitador
-                    productos = lines.slice(1, -1).map(line => {
-                        const values = line.split(';'); // Utilizar punto y coma como delimitador
-                        const producto = {};
-                        headers.forEach((header, index) => {
-                            producto[header.trim()] = values[index].trim();
-                        });
-                        return producto;
-                    });
-                    renderTable(productos);
-                } else {
-                    console.error('Error al cargar el archivo CSV');
-                }
-            }
-        };
-        xhr.open('GET', 'productos.csv'); // Nombre del archivo CSV
-        xhr.send();
+    // Función para cargar el archivo XLSX
+    function loadExcel() {
+        fetch('productos.xlsx') // Nombre del archivo XLSX
+            .then(response => response.arrayBuffer())
+            .then(data => {
+                const workbook = XLSX.read(data, { type: "array" });
+                const sheetName = workbook.SheetNames[0]; // Tomamos la primera hoja del Excel
+                const sheet = workbook.Sheets[sheetName];
+                productos = XLSX.utils.sheet_to_json(sheet); // Convertimos la hoja a JSON
+                renderTable(productos);
+            })
+            .catch(error => console.error("Error al cargar el archivo XLSX:", error));
     }
 
-    // Cargar el archivo CSV al cargar la página
-    loadCSV();
+    // Cargar el archivo XLSX al cargar la página
+    loadExcel();
 
     // Función para filtrar productos
     function filterProducts() {

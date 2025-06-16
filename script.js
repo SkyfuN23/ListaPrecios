@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         tbody.innerHTML = '';
         data.forEach((producto, index) => {
             const row = tbody.insertRow();
-            row.innerHTML = `<td>${index + 2}</td><td>${producto.Proveedor}</td><td>${producto.Codigo}</td><td>${producto.Descripcion}</td><td>${producto.Precio}</td>`;
+            row.innerHTML = `<td>${index + 1}</td><td>${producto.Proveedor}</td><td>${producto.Codigo}</td><td>${producto.Descripcion}</td><td>${producto.Precio}</td>`;
         });
     }
 
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     const csv = xhr.responseText;
                     const lines = csv.split('\n');
                     const headers = lines[0].split(';'); // Utilizar punto y coma como delimitador
-                    productos = lines.slice(1, -1).map(line => {
+                    productos = lines.slice(1).map(line => {
                         const values = line.split(';'); // Utilizar punto y coma como delimitador
                         const producto = {};
                         headers.forEach((header, index) => {
